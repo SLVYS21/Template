@@ -1,0 +1,21 @@
+const Notification = require('../models/notification.model');
+
+const notifController = ({
+    create: async (req, res) => {
+        try {
+            const {userId, message} = req.body;
+
+            const notification = new Notification({userId, message});
+            await notification.save();
+            res.status(201).json(notification);
+        } catch (error) {
+            return res.status(500).json({
+                message: error.message,
+                error
+            });
+        }
+    },
+    
+});
+
+module.exports = notifController;

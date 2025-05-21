@@ -1,0 +1,15 @@
+const mongoose = require('mongoose');
+
+const imageSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: [true, 'Need Image Name']
+    },
+    url: {
+        type: String,
+        required: [true, 'URL is required']
+    },
+    
+});
+
+module.exports = mongoose.model('Image', imageSchema);
